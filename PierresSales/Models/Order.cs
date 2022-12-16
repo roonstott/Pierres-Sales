@@ -6,7 +6,7 @@ namespace PierresSales.Models
   public class Order
   {
     public int OrderNumber { get; }
-    public string DeliverDate { get; }
+    public int[] DeliverDate { get; }
     public string SpecialInstructions { get; }    
     public bool OrderFulfilled { get; set; }
     public bool OrderPaid { get; set; }
@@ -15,9 +15,9 @@ namespace PierresSales.Models
     private static Dictionary<string, double> _priceList = new Dictionary<string, double> () {{"baguette", 3.25}, {"pastry", 2.00}, {"croissant", 2.50}, {"cookie", 1.50}};
     private static int _orderCounter = 1;
 
-    public Order (string deliverDate, string specialInstructions)
+    public Order (int deliverDay, int deliverMonth, string specialInstructions)
     {
-      string DeliverDate = deliverDate;
+      int[] DeliverDate = {deliverMonth, deliverDay};
       string SpecialInstructions = specialInstructions;
       bool OrderFulfilled = false; 
       bool OrderPaid = false;

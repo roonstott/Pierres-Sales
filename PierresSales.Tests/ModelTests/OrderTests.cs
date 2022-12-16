@@ -11,14 +11,14 @@ namespace PierresSales.Tests
     [TestMethod]
     public void Constructor_CreatesInstanceOfClass_Order()
     {
-      Order newOrder1 = new Order("March 1st", "leave on porch");
+      Order newOrder1 = new Order(3, 1, "leave on porch");
       Assert.AreEqual(typeof(Order), newOrder1.GetType());       
     }
     [TestMethod]
     public void Constructor_AssignsUniqueId_Int()
     {
-      Order newOrder1 = new Order("March 1st", "leave on porch");
-      Order newOrder2 = new Order("Janurary 2nd", "extra chocolate");
+      Order newOrder1 = new Order(3, 1, "leave on porch");
+      Order newOrder2 = new Order(1, 2, "extra chocolate");
       int result1 = newOrder1.OrderNumber;
       int result2 = newOrder2.OrderNumber;
       Assert.AreEqual(2, result1); 
@@ -27,10 +27,21 @@ namespace PierresSales.Tests
     [TestMethod]
     public void AddItem_AddsOrderItem_OrderItemsDictionaryElement()
     {
-      Order newOrder1 = new Order("March 1st", "leave on porch");
+      Order newOrder1 = new Order(3, 1, "leave on porch");
       newOrder1.AddItem("croissant", 3); 
       int result = newOrder1.OrderItems["croissant"];
       Assert.AreEqual(3, result); 
+    }
+    [TestMethod] 
+    public void RemoveItem_RemovesOrderItem_OrderItemsDictionary()
+    {
+      Order newOrder1 = new Order(3, 1, "leave on porch");
+      newOrder1.AddItem("croissant", 3);
+      newOrder1.AddItem("cookie", 15);
+      newOrder1.AddItem("pastry", 25);
+      newOrder1.RemoveItem("cookie"); 
+      int result = newOrder1.OrderItems.Count;
+      Assert.AreEqual(2, result);
     }
   }
 }
