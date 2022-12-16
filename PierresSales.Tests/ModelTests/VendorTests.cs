@@ -15,6 +15,11 @@ namespace PierresSales.Tests
       Assert.AreEqual(typeof(Vendor), newVendor.GetType());
     }
     [TestMethod]
-    public void 
+    public void GetClients_ReturnsClients_List()
+    {
+      Vendor newVendor = new Vendor("Robert", "5080 NE 56th Ave");
+      List<Vendor> result = Vendor.GetClients();
+      Assert.AreEqual(newVendor, result[0]); 
+    }
   }
 }
