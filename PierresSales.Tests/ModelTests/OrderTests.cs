@@ -24,5 +24,13 @@ namespace PierresSales.Tests
       Assert.AreEqual(2, result1); 
       Assert.AreEqual(3, result2);
     }
+    [TestMethod]
+    public void AddItem_AddsOrderItem_OrderItemsDictionaryElement()
+    {
+      Order newOrder1 = new Order("March 1st", "leave on porch");
+      newOrder1.AddItem("croissant", 3); 
+      int result = newOrder1.OrderItems["croissant"];
+      Assert.AreEqual(3, result); 
+    }
   }
 }

@@ -10,7 +10,7 @@ namespace PierresSales.Models
     public string SpecialInstructions { get; }    
     public bool OrderFulfilled { get; set; }
     public bool OrderPaid { get; set; }
-    public Dictionary<string, int> OrderItems { get; }
+    public Dictionary<string, int> OrderItems { get; set; }
 
     private static Dictionary<string, double> _priceList = new Dictionary<string, double> () {{"baguette", 3.25}, {"pastry", 2.00}, {"croissant", 2.50}, {"cookie", 1.50}};
     private static int _orderCounter = 1;
