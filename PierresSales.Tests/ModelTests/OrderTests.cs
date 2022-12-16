@@ -43,5 +43,15 @@ namespace PierresSales.Tests
       int result = newOrder1.OrderItems.Count;
       Assert.AreEqual(2, result);
     }
+    [TestMethod]
+    public void TotalCost_CalculatesTotalCostOfOrder_Double()
+    {
+      Order newOrder1 = new Order(3, 1, "leave on porch");
+      newOrder1.AddItem("croissant", 3);
+      newOrder1.AddItem("cookie", 15);
+      newOrder1.AddItem("pastry", 25);
+      double result = newOrder1.TotalCost();
+      Assert.AreEqual(80, result);
+    }
   }
 }
