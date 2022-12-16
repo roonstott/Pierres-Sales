@@ -41,7 +41,7 @@ namespace PierresSales.Tests
       newOrder1.AddItem("pastry", 25);
       newVendor1.AddOrder(newOrder1);
       int orderId = newOrder1.OrderNumber;
-      int cost = newVendor1.Orders[Id].TotalCost;
+      double cost = newVendor1.Orders[orderId].TotalCost;
       Assert.AreEqual(80, cost);       
     }
   }

@@ -29,6 +29,10 @@ namespace PierresSales.Models
     public static Vendor FindVendor(int id)
     { 
       return _clients[id];
-    }    
+    }
+    public void AddOrder(Order order)
+    {
+      Orders[order.OrderNumber] = order;
+    }
   }
 }
