@@ -25,6 +25,11 @@ namespace PierresSales.Models
       OrderNumber = _orderCounter; 
       _orderCounter +=1; 
     }
+
+    public void AddItem(string item, int quantity) 
+    {
+      OrderItems[item] = quantity; 
+    }
     
   }
 }
