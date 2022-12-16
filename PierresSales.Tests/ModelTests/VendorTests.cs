@@ -19,7 +19,7 @@ namespace PierresSales.Tests
     {
       Vendor newVendor = new Vendor("Robert", "5080 NE 56th Ave");
       List<Vendor> result = Vendor.GetClients();
-      Assert.AreEqual(newVendor, result[0]); 
+      Assert.AreEqual(newVendor.Name, result[0].Name); 
     }
   }
 }

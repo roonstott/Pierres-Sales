@@ -21,6 +21,11 @@ namespace PierresSales.Models
       Orders = new List<Order> { };
       _clients.Add(this);
     }
+
+    public static List<Vendor> GetClients()
+    {
+      return _clients;
+    }
     
   }
 }
