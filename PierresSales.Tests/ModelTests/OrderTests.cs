@@ -29,7 +29,7 @@ namespace PierresSales.Tests
     {
       Order newOrder1 = new Order(3, 1, "leave on porch");
       newOrder1.AddItem("croissant", 3); 
-      int result = newOrder1.OrderItems["croissant"];
+      double result = newOrder1.OrderItems["croissant"];
       Assert.AreEqual(3, result); 
     }
     [TestMethod] 
