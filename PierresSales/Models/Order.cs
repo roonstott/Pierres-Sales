@@ -30,6 +30,10 @@ namespace PierresSales.Models
     {
       OrderItems[item] = quantity; 
     }
+    public void RemoveItem(string item) 
+    {
+      OrderItems.Remove(item);
+    }
     
   }
 }
