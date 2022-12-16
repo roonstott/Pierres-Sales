@@ -42,7 +42,6 @@ namespace PierresSales.Models
         cost += (_priceList[item.Key] * item.Value);
       }
       return cost;
-    }
-    
+    }    
   }
 }

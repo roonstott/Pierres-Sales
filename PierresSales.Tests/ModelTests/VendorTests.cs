@@ -8,6 +8,13 @@ namespace PierresSales.Tests
   [TestClass]
   public class VendorTests
   {
-    
+    [TestMethod]
+    public void Constructor_CreatesInstanceOfVendorClass_Vendor()
+    {
+      Vendor newVendor = new Vendor("Robert", "5080 NE 56th Ave");
+      Assert.AreEqual(typeof(Vendor), newVendor.GetType());
+    }
+    [TestMethod]
+    public void 
   }
 }
