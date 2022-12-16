@@ -6,7 +6,7 @@ namespace PierresSales.Models
 {
   public class Vendor
   {
-    private static List<Vendor> _clients = new List<Vendor> {};
+    private static Dictionary<int, Vendor> _clients = new Dictionary<int, Vendor> () {};
     public string Name { get; }
     public string Address { get; }
     public int ClientNumber { get; }
@@ -19,13 +19,16 @@ namespace PierresSales.Models
       ClientNumber = _clientCounter;
       _clientCounter +=1;
       Orders = new List<Order> { };
-      _clients.Add(this);
+      _clients[ClientNumber] = this;
     }
 
-    public static List<Vendor> GetClients()
+    public static Dictionary<int, Vendor> GetClients()
     {
       return _clients;
     }
-    
+    public static Vendor FindVendor(int id)
+    { 
+      return _clients[id];
+    }    
   }
 }
