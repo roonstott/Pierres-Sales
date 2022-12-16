@@ -31,5 +31,18 @@ namespace PierresSales.Tests
       Vendor result = Vendor.FindVendor(5);
       Assert.AreEqual(newVendor3.Name, result.Name);
     }
+    [TestMethod]
+    public void AddOrder_AddsAnOrderToOrdersDictionary_Void()
+    {
+      Vendor newVendor1 = new Vendor("Robert", "5080 NE 56th Ave");
+      Order newOrder1 = new Order(3, 1, "leave on porch");
+      newOrder1.AddItem("croissant", 3);
+      newOrder1.AddItem("cookie", 15);
+      newOrder1.AddItem("pastry", 25);
+      newVendor1.AddOrder(newOrder1);
+      int orderId = newOrder1.OrderNumber;
+      int cost = newVendor1.Orders[Id].TotalCost;
+      Assert.AreEqual(80, cost);       
+    }
   }
 }

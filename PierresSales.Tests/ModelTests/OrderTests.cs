@@ -50,7 +50,7 @@ namespace PierresSales.Tests
       newOrder1.AddItem("croissant", 3);
       newOrder1.AddItem("cookie", 15);
       newOrder1.AddItem("pastry", 25);
-      double result = newOrder1.TotalCost();
+      double result = newOrder1.TotalCost;
       Assert.AreEqual(80, result);
     }
   }
