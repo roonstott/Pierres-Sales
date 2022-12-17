@@ -2,3 +2,12 @@
   Layout = "_Layout";
 }
 
+@using PierresSales.Models;
+
+<form action="/vendors/@Model.ClientNumber/orders" method="post">
+  <label for="name">Vendor name</label>
+  <input id="name" name="name" type="text">
+  <label for="address">Vendor address</label>
+  <input id="address" name="address" type="text">
+  <button type="submit">Add Vendor</button>
+</form>

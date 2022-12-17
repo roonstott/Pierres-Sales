@@ -2,3 +2,25 @@
   Layout = "_Layout";
 }
 
+@using PierresSales.Models;
+
+<h1>@Model.Name</h1>
+
+@if (Model.Orders.Count == 0)
+{
+  <p>This vendor has no orders</p>
+  <a href="/vendors/@Model.ClientNumber/orders/new">Click Here To Add An Order</a>
+}
+
+<ul>
+@foreach(KeyValuePair<int, Order> ord in Model.Orders)
+  {
+    <li>Order Number: @ord.Value.OrderNumber ( @ord.Value.DeliverMonth / @ord.Value.DeliverDay ) Total Price: @ord.Value.TotalCost</li>
+    <ul>
+      @foreach(KeyValuePair<string, double> item in ord.Value.OrderItems)
+        {
+          <li>@item.Key x @item.Value</li>
+        }
+    </ul>
+  }
+</ul>

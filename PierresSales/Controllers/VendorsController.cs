@@ -27,5 +27,13 @@ namespace PierresSales.Controllers
       return RedirectToAction("Index");
     }
 
+    [HttpGet("/vendors/{id}")]
+    public ActionResult Show(int id)
+    {
+      Vendor someVendor = Vendor.FindVendor(id);
+      return View(someVendor);
+    }
+    
+
   }
 }

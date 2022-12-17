@@ -12,7 +12,7 @@
 <ul>
 @foreach(KeyValuePair<int, Vendor> ven in Model)
 {
-  <li><a href="">@ven.Value.Name</a></li>
+  <li><a href="vendors/@ven.Value.ClientNumber">@ven.Value.Name</a></li>
 }
 
 </ul>

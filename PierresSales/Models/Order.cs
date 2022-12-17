@@ -6,7 +6,8 @@ namespace PierresSales.Models
   public class Order
   {
     public int OrderNumber { get; }
-    public Dictionary<string, int> DeliverDate { get; }
+    public int DeliverDay { get; }
+    public int DeliverMonth { get; }
     public string SpecialInstructions { get; }    
     public double TotalCost { get; set; }
     public Dictionary<string, double> OrderItems { get; set; }
@@ -16,7 +17,8 @@ namespace PierresSales.Models
 
     public Order (int deliverDay, int deliverMonth, string specialInstructions)
     {
-      Dictionary<string, int> DeliverDate = new Dictionary<string, int>() {{"month", deliverMonth}, {"day", deliverDay}};
+      DeliverDay = deliverDay;
+      DeliverMonth = deliverMonth;
       string SpecialInstructions = specialInstructions;
       OrderItems = new Dictionary<string, double> () { };
       OrderNumber = _orderCounter; 
