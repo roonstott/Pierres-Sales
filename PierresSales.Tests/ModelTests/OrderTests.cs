@@ -61,6 +61,13 @@ namespace PierresSales.Tests
       bool result = newOrder1.OrderPaid;
       Assert.AreEqual(result, true);
     }
-
+    [TestMethod]
+    public void MarkFulfilled_ChangesOrderFulfilledBoolToTrue_Bool()
+    {
+      Order newOrder1 = new Order("3", "1", "leave on porch");
+      newOrder1.MarkFulfilled(); 
+      bool result = newOrder1.OrderFulfilled;
+      Assert.AreEqual(result, true);
+    }
   }
 }
