@@ -40,5 +40,22 @@ namespace PierresSales.Controllers
       return View(display);
     }
 
+    [HttpPost("/vendors/{VendId}/orders{OrdId}")]
+    public ActionResult Update (int display, int VendId, int OrdId)
+    {
+      Vendor someVendor = Vendor.FindVendor(VendId); 
+      Order someOrder = someVendor.Orders[OrdId];
+      if (display == 2) 
+        {
+          someOrder.MarkFulfilled();
+        }
+      if (display == 3)
+        {
+          someOrder.MarkPaid();
+        }
+      
+      return RedirectToAction("IndexAll", display);      
+    }
+
   }
 }

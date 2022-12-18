@@ -13,7 +13,10 @@
       {
         <li>@kvp.Value.Name <br> 
         Deliver By: (@order.Value.DeliverMonth/@order.Value.DeliverDay) <br>
-        Total Cost: $@order.Value.TotalCost </li>
+        Total Cost: $@order.Value.TotalCost <br>
+        Order Fulfilled: @order.Value.OrderFulfilled <br>
+        Order Paid: @order.Value.OrderPaid
+        </li>        
       }
     }
   </ul>
@@ -22,8 +25,47 @@
 @if(Model ==2)
 {
   <h2>Unfulfilled Orders</h2>
+  <ul>
+    @foreach(KeyValuePair<int, Vendor> kvp in Vendor.GetClients()) 
+    {
+      @foreach(KeyValuePair<int, Order> order in kvp.Value.Orders)
+      { @if(order.Value.OrderFulfilled == false)
+        {
+          <li>@kvp.Value.Name <br>
+            Deliver By: (@order.Value.DeliverMonth/@order.Value.DeliverDay) <br>
+            Total Cost: $@order.Value.TotalCost <br>
+            Order Paid: @order.Value.OrderPaid
+          </li>
+        }     
+      }
+    }
+  </ul>
 }
 @if(Model ==3)
 {
   <h2>UnPaid Orders</h2>
+  <ul>
+    @foreach(KeyValuePair<int, Vendor> kvp in Vendor.GetClients()) 
+    {
+      @foreach(KeyValuePair<int, Order> order in kvp.Value.Orders)
+      { @if(order.Value.OrderPaid == false)
+        {
+          <div class="row">
+            <div class="col-6">
+              <li>@kvp.Value.Name <br>
+                Deliver By: (@order.Value.DeliverMonth/@order.Value.DeliverDay) <br>
+                Total Cost: $@order.Value.TotalCost <br>
+                Order Fulfilled: @order.Value.OrderFulfilled
+              </li>
+            </div>
+            <div class="col-6">
+              <form action="/vendors/@kvp.Value.ClientNumber/orders/@order.Value.OrderNumber" method="post">
+                <button type=submit name="display" value="@Model">Mark Paid</button>
+              </form>
+            </div>
+          </div>
+        }     
+      }
+    }
+  </ul>
 }
