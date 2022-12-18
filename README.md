@@ -33,6 +33,8 @@ _This web based application is a sales and client management platform for a hypo
 * _Click the links and buttons to create new vendors, create new orders, and to mark orders as either paid or fulfilled_
 * _To test, navigate to the PierresSales.Tests directory_
   `$ cd ../PierresSales.Tests`
+* _Enter the dotnet restore command_
+   `$ dotnet restore`
 * _Enter the dotnet test command_
     `$ dotnet test`
 * _The test results will be printed to the console_
