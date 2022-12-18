@@ -53,5 +53,14 @@ namespace PierresSales.Tests
       double result = newOrder1.TotalCost;
       Assert.AreEqual(80, result);
     }
+    [TestMethod]
+    public void MarkPaid_ChangesOrderPaidBoolToTrue_Bool()
+    {
+      Order newOrder1 = new Order("3", "1", "leave on porch");
+      newOrder1.MarkPaid(); 
+      bool result = newOrder1.OrderPaid;
+      Assert.AreEqual(result, true);
+    }
+
   }
 }
