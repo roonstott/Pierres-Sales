@@ -49,6 +49,10 @@ namespace PierresSales.Models
         cost += (PriceList[item.Key] * item.Value);
       }
       TotalCost = cost;
-    }    
+    }   
+    public void MarkPaid()
+    {
+      OrderPaid = true;
+    }
   }
 }
