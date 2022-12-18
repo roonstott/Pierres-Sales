@@ -5,9 +5,16 @@
 @using PierresSales.Models;
 
 <form action="/vendors/@Model.ClientNumber/orders" method="post">
-  <label for="name">Vendor name</label>
-  <input id="name" name="name" type="text">
-  <label for="address">Vendor address</label>
-  <input id="address" name="address" type="text">
-  <button type="submit">Add Vendor</button>
+  @foreach(KeyValuePair<string, double> kvp in Order.PriceList)
+    {
+      <label for="@kvp.Key">@kvp.Key (@kvp.Value)</label>
+      <input id="@kvp.Key" name="@kvp.Key" type="text">
+    }
+  <label for="deliverDay">Delivery Day</label>
+  <input id="deliverDay" name="deliverDay" type="text">
+  <label for="deliverMonth">Delivery Month</label>
+  <input id="deliverMonth" name="deliverMonth" type="text">
+  <label for="specialInstructions">Special Instructions</label>
+  <input id="specialInstructions" name="specialInstructions" type="text">
+  <button type="submit" name="Id" value="@Model.ClientNumber">Place Order</button>
 </form>

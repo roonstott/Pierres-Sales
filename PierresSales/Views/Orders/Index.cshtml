@@ -1,15 +1,14 @@
 @{
   Layout = "_Layout";
 }
+@using PierresSales.Models
 
-@using PierresSales.Models;
+<h2>@Model.Name 's Orders</h2>
 
-<h1>@Model.Name</h1>
-
-@if (Model.Orders.Count == 0)
+@if (Model.Orders.Count ==0) 
 {
-  <p>This vendor has no orders</p>
-  <a href="/vendors/@Model.ClientNumber/orders/new">Click Here To Add An Order</a>
+  <h3>No Orders Listed Yet</h3>
+  <a href="/vendors/@Model.ClientNumber/orders/new">Click here to add an order</a>
 }
 
 <ul>

@@ -1,0 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+@using PierresSales.Models
+
+@if(Model == 1)
+{
+  <h2>All Orders</h2>
+  <ul>
+    @foreach(KeyValuePair<int, Vendor> kvp in Vendor.GetClients()) 
+    {
+      @foreach(KeyValuePair<int, Order> order in kvp.Value.Orders)
+      {
+        <li>@kvp.Value.Name <br> 
+        Deliver By: (@order.Value.DeliverMonth/@order.Value.DeliverDay) <br>
+        Total Cost: $@order.Value.TotalCost </li>
+      }
+    }
+  </ul>
+}
+
+@if(Model ==2)
+{
+  <h2>Unfulfilled Orders</h2>
+}
+@if(Model ==3)
+{
+  <h2>UnPaid Orders</h2>
+}
