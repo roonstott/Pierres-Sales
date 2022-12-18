@@ -54,5 +54,9 @@ namespace PierresSales.Models
     {
       OrderPaid = true;
     }
+    public void MarkFulfilled()
+    {
+      OrderFulfilled = true;
+    }
   }
 }
