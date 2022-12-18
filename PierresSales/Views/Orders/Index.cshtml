@@ -1,31 +1,61 @@
 @{
   Layout = "_Layout";
 }
-@using PierresSales.Models
 
-<h2>@Model.Name 's Orders</h2>
+@using PierresSales.Models;
 
-@if (Model.Orders.Count ==0) 
+<h1>@Model.Name</h1>
+
+@if (Model.Orders.Count == 0)
 {
-  <h3>No Orders Listed Yet</h3>
-  <a href="/vendors/@Model.ClientNumber/orders/new">Click here to add an order</a>
+  <p>This vendor has no orders</p>
+  <a href="/vendors/@Model.ClientNumber/orders/new">Click Here To Add An Order</a>
 }
 
 <ul>
 @foreach(KeyValuePair<int, Order> ord in Model.Orders)
   {
-    <li>Order Number: @ord.Value.OrderNumber ( @ord.Value.DeliverMonth / @ord.Value.DeliverDay ) Total Price: @ord.Value.TotalCost</li>
-    <ul>
-      @foreach(KeyValuePair<string, double> item in ord.Value.OrderItems)
+    <div class="row">
+      <div class="col-6">
+        <li>Order Number: @ord.Value.OrderNumber<br>
+        Deliver Date:( @ord.Value.DeliverMonth / @ord.Value.DeliverDay)<br>
+        Total Price: $@ord.Value.TotalCost<br>
+        Fulfilled: @ord.Value.OrderFulfilled<br>
+        Paid: @ord.Value.OrderPaid
+          <ul>
+            @foreach(KeyValuePair<string, double> item in ord.Value.OrderItems)
+              {
+                <li>@item.Key x @item.Value</li>
+              }
+          </ul>
+        </li>
+      </div>
+      <div class="col-6">
+        @if (ord.Value.OrderFulfilled == false)
         {
-          <li>@item.Key x @item.Value</li>
+          <form action="/vendors/@Model.ClientNumber/orders/@ord.Value.OrderNumber" method="post">
+          <button type=submit name="display" value="1">Mark Fulfilled</button>
+        </form>
         }
-    </ul>
+        @if (ord.Value.OrderPaid == false)
+        {
+          <form action="/vendors/@Model.ClientNumber/orders/@ord.Value.OrderNumber" method="post">
+          <button type=submit name="display" value="2">Mark Paid</button>
+          </form>
+        }        
+      </div>      
+    </div>
   }
 </ul>
 
-<a href="/vendors/@Model.ClientNumber/orders/new">Click here to add another order</a>
+@if (Model.Orders.Count > 0)
+{
+  <a href="/vendors/@Model.ClientNumber/orders/new">Click here to add another order</a><br>
+  <a href="/vendors">Go Back To All Vendors</a>
+}
 
-<a href="/vendors/@Model.ClientNumber">Go Back To Vendor Page</a>
 
-<a href="/vendors">Go Back To All Vendors</a>
+
+
+
+

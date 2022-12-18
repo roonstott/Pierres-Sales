@@ -24,7 +24,7 @@ namespace PierresSales.Controllers
     public ActionResult Create(string name, string address)
     {
       Vendor newVendor = new Vendor(name, address);
-      return RedirectToAction("Index");
+      return View("Show", newVendor);
     }
 
     [HttpGet("/vendors/{id}")]
@@ -34,6 +34,20 @@ namespace PierresSales.Controllers
       return View(someVendor);
     }
     
-
+    [HttpPost("/vendors/{vendId}/orders/{ordId}")]
+    public ActionResult Update(int vendId, int ordId, int display)
+    {
+      Vendor someVendor = Vendor.FindVendor(vendId); 
+      Order someOrder = someVendor.Orders[ordId];
+      if (display == 1) 
+      {
+        someOrder.MarkFulfilled();
+      }
+      if (display == 2)
+      {
+        someOrder.MarkPaid();
+      }
+      return View("Show", someVendor);
+    }
   }
 }

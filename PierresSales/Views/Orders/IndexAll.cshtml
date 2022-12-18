@@ -31,11 +31,21 @@
       @foreach(KeyValuePair<int, Order> order in kvp.Value.Orders)
       { @if(order.Value.OrderFulfilled == false)
         {
-          <li>@kvp.Value.Name <br>
-            Deliver By: (@order.Value.DeliverMonth/@order.Value.DeliverDay) <br>
-            Total Cost: $@order.Value.TotalCost <br>
-            Order Paid: @order.Value.OrderPaid
-          </li>
+          <div class="row">
+            <div class="col-6">
+              <li>@kvp.Value.Name <br>
+                Deliver By: (@order.Value.DeliverMonth/@order.Value.DeliverDay) <br>
+                Total Cost: $@order.Value.TotalCost <br>
+                Order Paid: @order.Value.OrderPaid
+              </li>
+            </div>
+            <div class="col-6">
+              <form action="/vendors/all/orders/@order.Value.OrderNumber" method="post">
+                <input type="hidden" name="vendId" value="@kvp.Value.ClientNumber">
+                <button type=submit name="display" value="@Model">Mark Fulfilled</button>
+              </form>
+            </div>
+          </div>
         }     
       }
     }
@@ -59,7 +69,8 @@
               </li>
             </div>
             <div class="col-6">
-              <form action="/vendors/@kvp.Value.ClientNumber/orders/@order.Value.OrderNumber" method="post">
+              <form action="/vendors/all/orders/@order.Value.OrderNumber" method="post">
+                <input type="hidden" name="vendId" value="@kvp.Value.ClientNumber">
                 <button type=submit name="display" value="@Model">Mark Paid</button>
               </form>
             </div>
